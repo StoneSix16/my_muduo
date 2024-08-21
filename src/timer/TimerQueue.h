@@ -59,9 +59,6 @@ private:
     /// @brief 将定时器插入队列，并判断是否比当前最早到期时间更早
     bool insert(Timer* timer);
 
-    // 注意类成员变量的初始化顺序由变量声明顺序而非初始化列表顺序决定
-    // 被依赖的成员变量需要声明在前面
-    
     EventLoop* loop_;           /* 所属的EventLoop */ 
     const int timerfd_;         /* linux提供的定时器描述符，记录最早的到期时间 */
     Channel timerfdChannel_;    

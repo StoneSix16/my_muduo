@@ -23,6 +23,7 @@ make install
 ## TodoList
 
 - 编写build.sh
+- 用线程池替代循环线程执行计算任务
 - 完善文档
 - 补充测试样例, 添加压力测试
 - 增加对UDP连接的支持

@@ -85,7 +85,7 @@ void EventLoop::loop()
     looping_ = true;
     LOG_DEBUG << "EventLoop " << this << " start looping";
 
-    while(!quit_)
+    while(!quit_.load())
     {
         activeChannels_.clear();
         pollReturnTime_ = poller_->poll(Utils::kPollTimeMs, &activeChannels_);
@@ -106,12 +106,12 @@ void EventLoop::loop()
     LOG_DEBUG << "EventLoop " << this << " stop looping";
     looping_ = false;
     /// 在退出循环时重置quit。如果在进入循环前调用quit()，则跳过这次循环。
-    quit_ = false;
+    quit_.store(false);
 }
 
 void EventLoop::quit()
 {
-    quit_ = true;
+    quit_.store(true);
     if (!isInLoopThread())
     {
         wakeup();

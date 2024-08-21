@@ -24,7 +24,7 @@ enum ChannelStatus
 {
     kNew = -1,      /* 未被添加到poller中 */
     kAdded = 1,     /* 已被添加到poller中，且有感兴趣事件 */
-    kDeleted = 2    /* 已被添加到poller中，且没有感兴趣事件 */
+    kDeleted = 2    /* 被添加到poller中，但没有感兴趣事件 */
 };
 }
 
